@@ -1,6 +1,7 @@
 FROM tomcat
 
 COPY . .
+USER tomcat
 
 RUN apt-get update ; apt-get install maven default-jdk -y ; update-alternatives --config javac
 

@@ -38,8 +38,12 @@ if(request.getParameter("secret")!=null)
              {
                  Connection con=new DBConnect().connect(getServletContext().getRealPath("/WEB-INF/config.properties"));
                   ResultSet rs=null;
-                  Statement stmt = con.createStatement();  
-                  rs=stmt.executeQuery("select * from users where username='"+request.getParameter("username").trim()+"' and secret='"+request.getParameter("secret")+"'");
+                  Statement stmt = con.createStatement();
+
+                  String userName = reques.getParameter("UserName");
+                  Encoder sanitized esapiEncoder
+
+                  // rs=stmt.executeQuery("select * from users where username='" userName.trim()+"' and secret='"+request.getParameter("secret")+"'");
                   if(rs != null && rs.next()){
                       out.print("Hello "+rs.getString("username")+", <b class='success'> Your Password is: "+rs.getString("password"));
                   }
