@@ -23,7 +23,7 @@ jobs:
         CX_APIKEY: ${{ secrets.CXONE_CANARY_APIKEY }}
       with:
         command: web
-        config: ../../dast/dast-config/web.yaml
+        config: ./dast/dast-config/web.yaml
         environment_id: 40e853d3-bac7-4409-966c-0ae45666a96e
         base_url: https://deu.ast.checkmarx.net/
         # fail_on: 'HIGH'
