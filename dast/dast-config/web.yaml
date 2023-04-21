@@ -1,22 +1,22 @@
 ---
 env:
   contexts:
-    - name: "Testfire Context"
+    - name: "Default Context"
       urls:
-        - "http://testfire.net/"
+        - "http://testhtml5.vulnweb.com/"
       includePaths:
-        - "http://testfire.net/*"
+        - "http://testhtml5.vulnweb.com/.*"
       excludePaths: []
       authentication:
         method: "form"
         parameters:
-          loginPageUrl: "http://testfire.net/login.jsp"
-          loginRequestUrl: "http://testfire.net/doLogin"
-          loginRequestBody: "uid={%username%}&passw={%password%}"
+          loginPageUrl: "http://testhtml5.vulnweb.com/#/popular"
+          loginRequestUrl: "http://testhtml5.vulnweb.com/login"
+          loginRequestBody: "username={%username%}&password={%password%}"
         verification:
           method: "response"
-          loggedInRegex: "Sign Off"
-          loggedOutRegex: "Sign In"
+          loggedInRegex: "Logout"
+          loggedOutRegex: "Login"
           pollFrequency: 60
           pollUnits: "requests"
           pollUrl: ""
@@ -29,8 +29,8 @@ env:
       users:
         - name: "test_user"
           credentials:
-            password: "demo1234"
-            username: "jsmith"
+            password: "admin"
+            username: "admin"
   parameters:
     failOnError: true
     failOnWarning: false
@@ -44,7 +44,7 @@ jobs:
     name: "passiveScan-config"
     type: "passiveScan-config"
   - parameters:
-      context: "Testfire Context"
+      context: "Default Context"
       user: "test_user"
       url: ""
       maxDuration: 0
@@ -53,7 +53,7 @@ jobs:
     name: "spider"
     type: "spider"
   - parameters:
-      context: "Testfire Context"
+      context: "Default Context"
       user: "test_user"
       url: ""
       maxDuration: 60
@@ -66,7 +66,7 @@ jobs:
     name: "passiveScan-wait"
     type: "passiveScan-wait"
   - parameters:
-      context: "Testfire Context"
+      context: "Default Context"
       user: "test_user"
       policy: ""
       maxRuleDurationInMins: 0
@@ -84,4 +84,3 @@ jobs:
       reportDescription: ""
     name: "report"
     type: "report"
-    
