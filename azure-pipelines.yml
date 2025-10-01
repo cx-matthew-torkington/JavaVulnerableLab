@@ -1,6 +1,12 @@
 # Starter pipeline
 - task: Checkmarx AST@3
   inputs:
+    CheckmarxService: 'AST Instance'
+    projectName: '$(Build.Repository.Name)'
+    branchName: '$(Build.SourceBranchName)'
+    tenantName: 'mt_demo_ast'
+- task: Checkmarx AST@3
+  inputs:
     projectName: '$(Build.Repository.Name)'
     branchName: '$(Build.SourceBranchName)'
 # Start with a minimal pipeline that you can customize to build and deploy your code.
